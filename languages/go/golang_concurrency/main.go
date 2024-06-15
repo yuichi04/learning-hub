@@ -59,4 +59,7 @@ func main() {
 	fmt.Printf("i: %v\n", i)
 
 	fmt.Printf("l:%v m:%v n:%v\n", l, m, n)
+
+	fmt.Println("----------------------------------------")
+
 }

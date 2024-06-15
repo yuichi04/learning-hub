@@ -6,32 +6,49 @@
 brew install go
 ```
 
-## ディレクトリの作成
+## パスの追加（mac）
 
 ```shell
-mkdir myproject
-cd myproject
+# bash
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bash_profile
+source ~/.bash_profile
+
+# z shell
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+source ~/.zshrc
+```
+
+## インストールの確認
+
+```shell
+go version
+```
+
+## プロジェクトフォルダの作成
+
+```shell
+mkdir my-project && cd $_
 ```
 
 ## モジュールの初期化
 
 ```shell
-go mod init myproject
+go mod init my-project
 ```
 
-## サーバーの起動
+## 外部パッケージの自動インストール/アンインストール
 
-<u>例）HTTP サーバーを起動し、ブラウザに「Hello, World!」を出力する</u>
+```shell
+go mod tidy
+```
 
-### 1. プログラムの作成
+## サーバーの起動（ブラウザに`hello world`が表示されるまで）
 
-#### ファイルを作成
+### エントリーポイントを作成
 
 ```shell
 touch main.go
 ```
-
-#### ファイルの内容
 
 ```go
 package main
@@ -40,24 +57,38 @@ import (
     "fmt"
     "net/http"
 )
-// ハンドラ関数を定義
+
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, World!")
+    // io.Writer(`http.ResponseWriter`)にフォーマットされた出力を行う
+    fmt.Fprintln(w, "Hello, World!")
 }
 
+// Goではmain関数が最初に実行されるようになっている
 func main() {
-    // ハンドラ関数をルートパスに割り当て
     http.HandleFunc("/", helloHandler)
-    // サーバーをポート8080で起動
-    fmt.Println("Starting server at port 8080")
+    fmt.Println("Starting server at :8080")
     if err := http.ListenAndServe(":8080", nil); err != nil {
         fmt.Println(err)
     }
 }
 ```
 
-### 2. ソースコードのコンパイルとプログラムの実行
+### ソースコードのコンパイルとプログラムの実行
+
+実行後、`localhost:8080`にアクセスすると`Hello, World!`が表示される
 
 ```shell
 go run main.go
+```
+
+## ビルドの実行（バイナリデータに変換される）
+
+```shell
+# `-o`はバイナリデータのファイル名を指定できるオプション
+go build -o app main.go
+```
+
+```shell
+# `Hello, World`が出力される
+./app
 ```
