@@ -1,4 +1,4 @@
-package calculator
+package moduleandpackage
 
 import "fmt"
 
