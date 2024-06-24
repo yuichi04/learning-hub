@@ -1,0 +1,53 @@
+.parent {
+    width: 400px;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+
+    &:hover .toggle {
+        grid-template-rows: 1fr;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .toggle {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.4s;
+
+        div {
+            overflow: hidden;
+        }
+    }
+}
+
+.container {
+    width: 400px;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .content {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+
+        div {
+            overflow: hidden;
+        }
+    }
+
+    .drawer-open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+}
