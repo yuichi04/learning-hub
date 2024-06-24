@@ -1,22 +1,57 @@
-package main
+// // Structオリエンテッド
+// package main
 
-import "fmt"
+// import "fmt"
 
-func main() {
-	var price float64
-	fmt.Print("商品の価格を入力して下さい: ")
-	fmt.Scan(&price)
+// type Vertex struct {
+// 	X, Y int
+// }
 
-	// 消費税率10%
-	taxRate := 0.10
+// func (v Vertex) Area() int {
+// 	return v.X * v.Y
+// }
 
-	// 消費税額を計算
-	taxAmount := price * taxRate
+// // ポインタレシーバー
+// func (v *Vertex) Scale(i int) {
+// 	v.X = v.X * i
+// 	v.Y = v.Y * i
+// }
 
-	// 最終的な支払額を計算
-	finalAmount := price + taxAmount
+// func Area(v Vertex) int {
+// 	return v.X * v.Y
+// }
 
-	fmt.Printf("商品価格: %.2f円\n", price)
-	fmt.Printf("消費税額: %.2f円\n", taxAmount)
-	fmt.Printf("支払額合計: %.2f円\n", finalAmount)
-}
+// func main() {
+// 	v := Vertex{3, 4}
+// 	fmt.Println(Area(v))
+// 	v.Scale(10)
+// 	fmt.Println(v.Area())
+// }
+
+// // コンストラクタ
+// package main
+
+// import "fmt"
+
+// type Vertex struct {
+// 	x, y int
+// }
+
+// func (v Vertex) Area() int {
+// 	return v.x * v.y
+// }
+
+// func (v *Vertex) Scale(i int) {
+// 	v.x = v.x * i
+// 	v.y = v.y * i
+// }
+
+// func New(x, y int) *Vertex {
+// 	return &Vertex{x, y}
+// }
+
+// func main() {
+// 	v := New(3, 4)
+// 	v.Scale(10)
+// 	fmt.Println(v.Area())
+// }
