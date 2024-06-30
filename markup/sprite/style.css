@@ -1,0 +1,42 @@
+body {
+    padding: 168px;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    font: 600 1rem/1 sans-serif;
+    color: #fff;
+    cursor: pointer;
+    background-color: #06f;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 32px;
+    position: relative;
+    transition: background-color 0.4s;
+    box-shadow: 0 12px 16px -4px rgba(0, 0, 0, 0.5);
+}
+.button:hover {
+    background-color: #90f;
+}
+.button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: url(img.jpg);
+    background-size: 700% 100%;
+    mix-blend-mode: screen;
+    margin: auto;
+    aspect-ratio: 66 / 37;
+}
+.button:hover::before {
+    animation: sprite 1s steps(7) forwards;
+}
+
+@keyframes sprite {
+    to {
+        background-position-x: 700%;
+    }
+}
